@@ -3,7 +3,7 @@ CREATE TABLE Categoria (
     nombre_categoria VARCHAR(50) NOT NULL,
     descripcion_categoria VARCHAR(100) NOT NULL,
     PRIMARY KEY(id_categoria)
-);
+);  
 
 CREATE TABLE Marca (
     id_marca INT NOT NULL AUTO_INCREMENT,
@@ -17,6 +17,13 @@ CREATE TABLE Presentacion (
     tipo_presentacion VARCHAR(50) NOT NULL,
     descripcion_presentacion VARCHAR(100) NOT NULL,
     PRIMARY KEY(id_presentacion)
+);
+
+CREATE TABLE Rol (
+    id_rol INT NOT NULL AUTO_INCREMENT,
+    nombre_rol VARCHAR(50) NOT NULL,
+    descripcion_rol VARCHAR(50) NOT NULL,
+    PRIMARY KEY(id_rol)
 );
 
 CREATE TABLE Productos (
@@ -54,12 +61,14 @@ CREATE TABLE Detalle_venta (
 
 CREATE TABLE Usuario (
     Clv_Usuario VARCHAR(5) NOT NULL,
+    id_rol INT NOT NULL, 
     Nombre VARCHAR(70) NOT NULL,
     Apellido_Paterno VARCHAR(50) NOT NULL,
     Apellido_Materno VARCHAR(50) NOT NULL,
     Correo VARCHAR(100) NOT NULL,
     Usuario VARCHAR(50) NOT NULL,
     Contraseña VARCHAR(50) NOT NULL,
-    PRIMARY KEY (Clv_Usuario)
+    PRIMARY KEY (Clv_Usuario),
+    FOREIGN KEY(id_rol) REFERENCES Rol(id_rol)
 );
 
